@@ -1,0 +1,33 @@
+{
+  "globals"   : {
+    "describe"      : false,
+    "it"            : false,
+    "before"        : false,
+    "beforeEach"    : false,
+    "after"         : false,
+    "next"          : false,
+    "net"           : false,
+    "afterEach"     : false
+  },
+  "latedef"         : false,
+  "camelcase"       : true,
+  "curly"           : false,
+  "loopfunc"        : true,
+  "immed"           : false,
+  "eqeqeq"          : false,
+  "freeze"          : true,
+  "shadow"          : true,
+  "indent"          : 4,
+  "maxdepth"        : 8,
+  "latedef"         : false,
+  "laxcomma"        : true,
+  "node"            : true,
+  "node"            : true,
+  "evil"            : false,
+  "esversion"       : 6,
+  "moz"             : false,
+  "trailing"        : true,
+  "strict"          : false,
+  "unused"          : "vars",
+  "undef"           : true
+}
