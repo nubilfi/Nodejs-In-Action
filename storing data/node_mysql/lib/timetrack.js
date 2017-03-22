@@ -22,7 +22,7 @@ exports.parseReceivedData = function (req, cb) {    // parse HTTP POST data
 
 exports.actionForm = function (id, path, label) {   // render simple form
     let html = '<form method="POST" action="' + path + '">' +
-        '<input type="hidden" name="id" values="' + id + '">' +
+        '<input type="hidden" name="id" value="' + id + '">' +
         '<input type="submit" value="' + label + '"/>' +
         '</form>';
     return html;
@@ -102,7 +102,7 @@ exports.workHitlistHtml = function (rows) {         // rendering work records to
         if (!rows[i].archived) {                    // show archive button if work record isn't already archived
             html += '<td>' + exports.workArchiveForm(rows[i].id) + '</td>';
         }
-        html += '<td>' + exports.workDeleteFrom(rows[i].id) + '</td>';
+        html += '<td>' + exports.workDeleteForm(rows[i].id) + '</td>';
         html += '</tr>';
     }
     html += '</table>';
@@ -111,11 +111,11 @@ exports.workHitlistHtml = function (rows) {         // rendering work records to
 
 exports.workFormHtml = function () {                // render blank HTML form fro entering new work record
     let html = '<form method="POST" action="/">' +
-        '<p>Date (YYYY-MM-DD): <br/><input type="text" name="date"></p>' +
-        '<p>Hours worked: <br/><input type="text" name="hours"></p>' +
+        '<p>Date (YYYY-MM-DD):<br/><input name="date" type="text"><p/>' +
+        '<p>Hours worked:<br/><input name="hours" type="text"><p/>' +
         '<p>Description:<br/>' +
         '<textarea name="description"></textarea></p>' +
-        '<input type="submit" value="Add">' +
+        '<input type="submit" value="Add" />' +
         '</form>';
     return html;
 };
@@ -124,6 +124,6 @@ exports.workArchiveForm = function (id) {           // render archive button for
     return exports.actionForm(id, '/archive', 'Archive');
 };
 
-exports.workDeleteFrom = function (id) {            // render delete button form
+exports.workDeleteForm = function (id) {            // render delete button form
     return exports.actionForm(id, '/delete', 'Delete');
 };
