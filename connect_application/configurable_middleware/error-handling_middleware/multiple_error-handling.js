@@ -21,7 +21,7 @@ function users(req, res, next) {            // The users component will throw a 
     'use strict';
     let match = req.url.match(/^\/user\/(.+)/);            // match the req.url using regexp
     console.log(db.users);
-    console.log(db.users[match[1]]);
+    console.log(match);
     if (match) {                            // check if the user index exists by using match[1]
         let user = db.users[match[1]];      // which is the first capture group
         if (user) {                         // if the user exists, it's serialized as JSON
