@@ -1,0 +1,13 @@
+
+  <h1>Photos</h1>
+  <p>Express stock photo application.</p>
+  <div id="photos">
+    {{#each items as |photo|}}
+      <div class="photo">
+        <h2>{{ photo.name }}</h2>
+        <a href="/photos/{{photo.id}}/download">
+            <img src="{{ splitPath photo.path }}">
+        </a>
+      </div>
+    {{/each}}
+  </div>
