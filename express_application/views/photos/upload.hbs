@@ -1,10 +1,16 @@
     <h1>{{ title }}</h1>
     <p>Upload a photo to your account below.</p>
     <form action="/photos/upload" method="post" enctype="multipart/form-data">
-        <img alt="Your image" class="photo img-thumbnail" id="imgPreview">
-        <p><input type="text" name="name" placeholder="Name"></p>
-        <p><input type="file" name="image"></p>
-        <p><input type="submit" value="Upload"></p>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="thumbnail text-center">
+              <img id="imgPreview" src="/images/thumbnail-default.jpg" alt="Your image">
+            </div>
+            <p><input type="text" class="form-control" name="name" placeholder="Title"></p>
+            <p><input type="file" class="form-control" name="image"></p>
+            <p><input type="submit" class="btn btn-primary" value="Upload"></p>
+          </div>
+        </div>
     </form>
 
     <script type="text/javascript">
