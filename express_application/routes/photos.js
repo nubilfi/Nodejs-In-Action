@@ -1,7 +1,9 @@
+'use strict';
+
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-
+const fs = require('fs');
 const Photo = require('../models/photo');
 
 const storage = multer.diskStorage({
@@ -11,7 +13,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, callback) {
         let originalname = file.originalname;
         let extension = originalname.split(".");
-        filename = Date.now() + '.' + extension[extension.length-1];
+        let filename = Date.now() + '.' + extension[extension.length-1];
         callback(null, filename);
     }
 });
@@ -46,7 +48,13 @@ router.get('/:id/download', function (req, res, next) {
     Photo.findById(id, function (err, photo) {
         if (err) throw err;
 
-        res.sendfile(photo.path);
+      	let dataSrc = photo.path.split('/');
+      	let fileSrc = 'public/photos/' + dataSrc[2];
+
+      	let src = fs.createReadStream(fileSrc);
+
+      	src.pipe(res);
+
         // res.download(photo.path);            to download the image
     });
 });

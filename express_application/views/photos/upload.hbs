@@ -1,7 +1,25 @@
     <h1>{{ title }}</h1>
     <p>Upload a photo to your account below.</p>
     <form action="/photos/upload" method="post" enctype="multipart/form-data">
+        <img alt="Your image" class="photo img-thumbnail" id="imgPreview">
         <p><input type="text" name="name" placeholder="Name"></p>
         <p><input type="file" name="image"></p>
         <p><input type="submit" value="Upload"></p>
     </form>
+
+    <script type="text/javascript">
+      var imgContent = document.querySelector('input[name="image"]');
+
+      imgContent.onchange = function () {
+        var reader = new FileReader();
+
+        reader.onload = function (evt) {
+          // get loaded data and render thumbnail
+          var showImg = document.getElementById('imgPreview');
+          showImg.src = evt.target.result;
+        };
+
+        // read the image file as a data URL
+        reader.readAsDataURL(this.files[0]);
+      }
+    </script>
